@@ -19,22 +19,23 @@ You will need to:
 
 1. Import contacts.sql into a MySQL database
 
-2. Write AbstractModel.php with the following methods
+2.  Write AbstractModel.php with the following methods
 
         public function save()
         public function load($id)
         public function delete($id)
         public function getData($key=false)
         public function setData($arr, $value=false)
-You will need to make database calls in these methods. Use one of the following adapters:
+    
+    **Note**: Make sure your abstract model isn't hard coded to only use the contacts table! You do not need to make AbstractModel work with composite keys—Assume all models extending from this table use a single primary key.
+
+    You will need to make database calls in these methods. Use one of the following adapters:
 
         PDO
         MySQL
         MySQLi
 
-3. Ensure contacts_test.php runs correctly (the expected output is in the file)—this is basically a unit test
-
-**NOTE**: You do not need to make AbstractModel work with composite keys. (Assume all models extending from this table use a single primary key)
+3. Ensure contacts_test.php runs correctly (the expected output is in the file)—this is basically a unit test.
 
 
 =========================================================================================
@@ -46,9 +47,9 @@ Using the framework of your choice, incorporate the abstract model into a simple
 
 **Application guidelines**:
 
-1. Must have the following web page <code>myapp/contact/view?id=[some_id]</code> or <code>myapp/contact/view/[some_id]</code> which displays all of the contact's information for the given id.
+1. Create a web page for viewing contacts (e.g. <code>myapp/contact/view?id=[some_id]</code> or <code>myapp/contact/view/[some_id]</code>). This page should display all of the contact's information for the given id.
 
-2. Must use the Contact model shown above to load the record.
+2. Use the Contact model shown above to load the record.
 
 
 =========================================================================================
